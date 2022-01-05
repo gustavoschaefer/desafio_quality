@@ -15,7 +15,7 @@ public class ComodoService {
 
 
     //Busca o maior quarto de um imovel
-    public Comodo comparaQuartos(Imovel imovel){
+    public Comodo comparaComodos(Imovel imovel){
         quartoList = imovel.getComodos();
         return quartoList.stream()
                 .max(Comparator.comparing(Comodo::getTamanho)).get();
