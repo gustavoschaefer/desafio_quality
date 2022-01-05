@@ -4,20 +4,16 @@ package br.com.desafio_quality.service.test;
 import br.com.desafio_quality.entity.Bairro;
 import br.com.desafio_quality.entity.Comodo;
 import br.com.desafio_quality.entity.Imovel;
-import br.com.desafio_quality.repository.BairroRepository;
 import br.com.desafio_quality.repository.ImovelRepository;
 import br.com.desafio_quality.service.BairroService;
 import br.com.desafio_quality.service.ImovelService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.util.Assert;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class ImovelServiceTest {
 
@@ -27,14 +23,9 @@ public class ImovelServiceTest {
         Bairro bairro = Bairro.builder()
                 .nome("Bairro1")
                 .valorMetroQuadrado(BigDecimal.valueOf(200.00)).build();
-        List<Bairro> bairros = new ArrayList<>();
 
-        BairroRepository mockBairro = Mockito.mock(BairroRepository.class);
-        Mockito.when(mockBairro.setBairro(bairro)).thenReturn(bairro);
-        Mockito.when(mockBairro.getBairros()).thenReturn(bairros);
-        BairroService bairroService = new BairroService(mockBairro);
-
-        Bairro bairroRegistro = bairroService.salvaBairro(bairro);
+        BairroService mockBairro = Mockito.mock(BairroService.class);
+        Mockito.when(mockBairro.bairroExiste(bairro)).thenReturn(true);
 
         Imovel imovel = Imovel.builder()
                 .nome("Casa1")
@@ -51,7 +42,7 @@ public class ImovelServiceTest {
 
         ImovelRepository mock = Mockito.mock(ImovelRepository.class);
         Mockito.when(mock.setImovel(imovel)).thenReturn(imovel);
-        ImovelService imovelService = new ImovelService(mock, bairroService);
+        ImovelService imovelService = new ImovelService(mock, mockBairro);
 
         Imovel imovelRegistro = imovelService.cadastra(imovel);
 
