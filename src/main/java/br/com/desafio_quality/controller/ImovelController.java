@@ -6,6 +6,7 @@ import br.com.desafio_quality.service.ImovelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 
 @RestController
@@ -16,7 +17,7 @@ public class ImovelController {
 
     //Cadastra um imovel na lista de Imóveis (ImovelService)
     @PostMapping("/cadastra")
-    public Imovel cadastra(@RequestBody Imovel imovel) {
+    public Imovel cadastra(@Valid @RequestBody Imovel imovel) {
         return imovelService.cadastra(imovel);
     }
 
@@ -39,8 +40,8 @@ public class ImovelController {
     }
 
     //c) Retornar os dados do maior quarto (nome, largura e comprimento)
-    @GetMapping("/maiorquarto/{nome}")
-    public Comodo maiorQuarto(@PathVariable String nome){
-        return imovelService.obtemMaiorQuarto(nome);
+    @GetMapping("/maiorcomodo/{nome}")
+    public Comodo maiorComodo(@PathVariable String nome){
+        return imovelService.obtemMaiorComodo(nome);
     }
 }

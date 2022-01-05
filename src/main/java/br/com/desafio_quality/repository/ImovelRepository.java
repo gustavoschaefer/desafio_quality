@@ -20,9 +20,10 @@ public class ImovelRepository {
     private ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     private final String PATH = "src/main/java/br/com/desafio_quality/repository/imoveis.json";
 
-    public void setImovel(Imovel imovel) throws IOException {
+    public Imovel setImovel(Imovel imovel) throws IOException {
         imoveis.add(imovel);
         objectMapper.writeValue(new File(PATH), imoveis);
+        return imovel;
     }
 
     public List<Imovel> listarImovel() throws  IOException{

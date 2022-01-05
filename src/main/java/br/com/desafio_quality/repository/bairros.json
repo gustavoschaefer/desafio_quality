@@ -1,0 +1,14 @@
+[
+  {
+    "nome" : "Bairro1",
+    "valorMetroQuadrado" : 200.00
+  },
+  {
+    "nome" : "Bairro2",
+    "valorMetroQuadrado" : 300.00
+  },
+  {
+    "nome" : "Bairro3",
+    "valorMetroQuadrado" : 400.00
+  }
+]

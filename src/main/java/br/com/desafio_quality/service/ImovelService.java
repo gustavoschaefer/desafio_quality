@@ -2,9 +2,12 @@ package br.com.desafio_quality.service;
 
 import br.com.desafio_quality.entity.Comodo;
 import br.com.desafio_quality.entity.Imovel;
+import br.com.desafio_quality.repository.BairroRepository;
 import br.com.desafio_quality.repository.ImovelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -15,39 +18,45 @@ import java.util.Optional;
 @Service
 public class ImovelService {
 
-    @Autowired
     ImovelRepository imovelRepository;
 
     @Autowired
     ComodoService comodoService;
 
+    BairroService bairroService;
+
     List<Imovel> imovelList = new ArrayList<>();
+
+    public ImovelService(ImovelRepository imovelRepository, BairroService bairroService) {
+        this.imovelRepository = imovelRepository;
+        this.bairroService = bairroService;
+    }
 
     //Endpoint para cadastrar Imovel
     public Imovel cadastra(Imovel imovel) {
        try {
-           imovelRepository.setImovel(imovel);
-       }catch (IOException e){
+           if (bairroService.bairroExiste(imovel.getBairro())) {
+               imovelRepository.setImovel(imovel);
+           }
+           else {
+               throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Bairro não registrado.");
+           }
 
-       }
+       }catch (IOException e){}
         return imovel;
     }
 
     //Busca imovel por nome
     public Imovel buscarImovel(String nome) {
         Imovel imovel = new Imovel();
-        List<Imovel> imoveis = new ArrayList<>();
-
         try{
-            imoveis = imovelRepository.listarImovel();
-
+            Optional<Imovel> optional = imovelRepository.listarImovel().stream()
+                    .filter(u -> u.getNome().equals(nome))
+                    .findFirst();
+            imovel = optional.orElse(new Imovel());
         }catch (IOException e){
-            e.getMessage();
+            //TODO
         }
-        Optional<Imovel> optional = imoveis.stream()
-                .filter(u -> u.getNome().equals(nome))
-                .findFirst();
-        imovel = optional.orElse(new Imovel());
         return imovel;
     }
 
@@ -81,7 +90,7 @@ public class ImovelService {
     }
 
     //Busca maior quarto
-    public Comodo obtemMaiorQuarto(String nome) {
+    public Comodo obtemMaiorComodo(String nome) {
             try{
                 Optional<Imovel> optional = imovelRepository.listarImovel().stream()
                         .filter(u -> u.getNome().equals(nome))
