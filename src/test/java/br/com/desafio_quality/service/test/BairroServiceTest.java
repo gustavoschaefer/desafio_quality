@@ -1,19 +1,16 @@
 package br.com.desafio_quality.service.test;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
+import br.com.desafio_quality.entity.Bairro;
+import br.com.desafio_quality.repository.BairroRepository;
+import br.com.desafio_quality.service.BairroService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import br.com.desafio_quality.entity.Bairro;
-import br.com.desafio_quality.repository.BairroRepository;
-import br.com.desafio_quality.service.BairroService;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BairroServiceTest {
 
@@ -64,7 +61,7 @@ public class BairroServiceTest {
 				() -> bairroService.bairroExiste(Bairro.builder().nome("Bairro1").valorMetroQuadrado(BigDecimal.valueOf(190.00)).build())
 		);
 
-		System.out.println(thrown.getMessage());
+
 		Assertions.assertTrue(thrown.getMessage().contains("Erro ao buscar bairros"));
 	}
 }

@@ -1,16 +1,6 @@
 package br.com.desafio_quality.service.test;
 
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
 import br.com.desafio_quality.entity.Bairro;
 import br.com.desafio_quality.entity.Comodo;
 import br.com.desafio_quality.entity.Imovel;
@@ -18,6 +8,16 @@ import br.com.desafio_quality.repository.ImovelRepository;
 import br.com.desafio_quality.service.BairroService;
 import br.com.desafio_quality.service.ComodoService;
 import br.com.desafio_quality.service.ImovelService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ImovelServiceTest {
 
@@ -89,8 +89,18 @@ public class ImovelServiceTest {
     }
 
     @Test
-    public void naoDeveCadastrarImovel() throws IOException{
+    public void buscarImovelException() throws IOException{
+        ImovelRepository imovelRepositoryMock = Mockito.mock(ImovelRepository.class);
+        Mockito.when(imovelRepositoryMock.listarImovel()).thenThrow(new IOException());
 
+        ImovelService imovelService = new ImovelService(imovelRepositoryMock, null,null);
+
+        ResponseStatusException thrown = Assertions.assertThrows(
+                ResponseStatusException.class,
+                () -> imovelService.buscarImovel("CasaTeste"));
+
+
+        Assertions.assertTrue(thrown.getMessage().contains("Imovel não registrado."));
 
     }
 
