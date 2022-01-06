@@ -15,6 +15,7 @@ import java.net.URI;
 @RestController
 @RequestMapping("/imoveis")
 public class ImovelController {
+
     @Autowired
     private ImovelService imovelService;
 

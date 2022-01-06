@@ -35,7 +35,9 @@ public class Comodo {
     private double tamanho;
 
     public double getTamanho() {
-        return largura*comprimento;
+        tamanho = largura*comprimento;
+
+        return tamanho;
     }
 
 }

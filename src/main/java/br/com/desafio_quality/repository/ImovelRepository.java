@@ -5,15 +5,14 @@ import br.com.desafio_quality.entity.Imovel;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class ImovelRepository {
 
     private List<Imovel> imoveis = new ArrayList<>();

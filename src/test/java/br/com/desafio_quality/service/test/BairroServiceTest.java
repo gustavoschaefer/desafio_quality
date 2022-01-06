@@ -13,6 +13,8 @@ import br.com.desafio_quality.entity.Bairro;
 import br.com.desafio_quality.repository.BairroRepository;
 import br.com.desafio_quality.service.BairroService;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class BairroServiceTest {
 
 	@Test
@@ -45,5 +47,24 @@ public class BairroServiceTest {
 		boolean condicao = bairroService.bairroExiste(Bairro.builder().nome("Bairro55").valorMetroQuadrado(BigDecimal.valueOf(190.00)).build());
 
 		Assertions.assertFalse(condicao);
+	}
+
+	@Test
+	public void bairroExisteException() throws IOException{
+
+
+
+		BairroRepository bairroRepositoryMock = Mockito.mock(BairroRepository.class);
+		Mockito.when(bairroRepositoryMock.getBairros()).thenThrow(new IOException());
+
+		BairroService bairroService = new BairroService(bairroRepositoryMock);
+
+		RuntimeException thrown = Assertions.assertThrows(
+				RuntimeException.class,
+				() -> bairroService.bairroExiste(Bairro.builder().nome("Bairro1").valorMetroQuadrado(BigDecimal.valueOf(190.00)).build())
+		);
+
+		System.out.println(thrown.getMessage());
+		Assertions.assertTrue(thrown.getMessage().contains("Erro ao buscar bairros"));
 	}
 }

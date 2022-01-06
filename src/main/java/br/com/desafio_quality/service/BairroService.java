@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class BairroService {
 
-    BairroRepository bairroRepository = new BairroRepository();
+    private BairroRepository bairroRepository;
 
     List<Bairro> bairros = new ArrayList<>();
 
@@ -19,24 +19,14 @@ public class BairroService {
         this.bairroRepository = bairroRepository;
     }
 
-    public BairroService() {
 
-    }
 
-  /*  public Bairro salvaBairro(Bairro bairro) {
-        try {
-            bairroRepository.setBairro(bairro);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return bairro;
-    }
-*/
+
     public boolean bairroExiste(Bairro bairro) {
         try {
             bairros = bairroRepository.getBairros();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Erro ao buscar bairros.");
         }
         for (Bairro b : bairros) {
             if (b.getNome().equals(bairro.getNome())) {

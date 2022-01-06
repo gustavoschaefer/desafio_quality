@@ -46,17 +46,17 @@ public class ImovelServiceTest {
 
         ImovelRepository mock = Mockito.mock(ImovelRepository.class);
         Mockito.when(mock.setImovel(imovel)).thenReturn(imovel);
-        ImovelService imovelService = new ImovelService(mock, mockBairro);
-        
+        ImovelService imovelService = new ImovelService(mock, mockBairro,null);
+
         Imovel imovelRegistro = imovelService.cadastra(imovel);
 
         Assertions.assertEquals(imovelRegistro.getTamanho(), 99.0);
     }
-    
+
     @Test
     public void deveObterMaiorComodo() throws IOException {
-    	
-    	List<Imovel> imoveis = new ArrayList<>();
+
+        List<Imovel> imoveis = new ArrayList<>();
 
         Imovel imovel = Imovel.builder()
                 .nome("Casa1")
@@ -70,22 +70,28 @@ public class ImovelServiceTest {
                         Comodo.builder().nome("Sala").largura(7).comprimento(5).build(),
                         Comodo.builder().nome("Banheiro").largura(2).comprimento(3).build()
                 )).build();
-        
+
         imoveis.add(imovel);
 
         ImovelRepository mock = Mockito.mock(ImovelRepository.class);
         Mockito.when(mock.listarImovel()).thenReturn(imoveis);
-        
+
         ComodoService comodoServiceMock = Mockito.mock(ComodoService.class);
         Comodo comodoTeste = Comodo.builder().nome("Sala").largura(7).comprimento(5).build();
-        
-    	Mockito.when(comodoServiceMock.comparaComodos(imovel)).thenReturn(comodoTeste);        
-        
-        ImovelService imovelService = new ImovelService(mock, comodoServiceMock);
-        
+
+        Mockito.when(comodoServiceMock.comparaComodos(imovel)).thenReturn(comodoTeste);
+
+        ImovelService imovelService = new ImovelService(mock,null,comodoServiceMock);
+
         Comodo comodo = imovelService.obtemMaiorComodo(imovel.getNome());
 
         Assertions.assertEquals(comodo.getNome(), "Sala");
     }
-    
+
+    @Test
+    public void naoDeveCadastrarImovel() throws IOException{
+
+
+    }
+
 }
