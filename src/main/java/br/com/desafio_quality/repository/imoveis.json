@@ -1,7 +1,7 @@
 [ {
   "nome" : "Casa1",
   "bairro" : {
-    "nome" : "Bairro3",
+    "nome" : "Bairro1",
     "valorMetroQuadrado" : 100.00
   },
   "tamanho" : 912.0,
@@ -34,7 +34,106 @@
 }, {
   "nome" : "Casa1",
   "bairro" : {
-    "nome" : "Bairro2",
+    "nome" : "Bairro1",
+    "valorMetroQuadrado" : 100.00
+  },
+  "tamanho" : 912.0,
+  "comodos" : [ {
+    "nome" : "Quarto1",
+    "largura" : 25.0,
+    "comprimento" : 33.0,
+    "tamanho" : 825.0
+  }, {
+    "nome" : "Quarto2",
+    "largura" : 4.0,
+    "comprimento" : 4.0,
+    "tamanho" : 16.0
+  }, {
+    "nome" : "Cozinha",
+    "largura" : 6.0,
+    "comprimento" : 5.0,
+    "tamanho" : 30.0
+  }, {
+    "nome" : "Sala",
+    "largura" : 7.0,
+    "comprimento" : 5.0,
+    "tamanho" : 35.0
+  }, {
+    "nome" : "Banheiro",
+    "largura" : 2.0,
+    "comprimento" : 3.0,
+    "tamanho" : 6.0
+  } ]
+}, {
+  "nome" : "Casa1",
+  "bairro" : {
+    "nome" : "Bairro1",
+    "valorMetroQuadrado" : 100.00
+  },
+  "tamanho" : 912.0,
+  "comodos" : [ {
+    "nome" : "Quarto1",
+    "largura" : 25.0,
+    "comprimento" : 33.0,
+    "tamanho" : 825.0
+  }, {
+    "nome" : "Quarto2",
+    "largura" : 4.0,
+    "comprimento" : 4.0,
+    "tamanho" : 16.0
+  }, {
+    "nome" : "Cozinha",
+    "largura" : 6.0,
+    "comprimento" : 5.0,
+    "tamanho" : 30.0
+  }, {
+    "nome" : "Sala",
+    "largura" : 7.0,
+    "comprimento" : 5.0,
+    "tamanho" : 35.0
+  }, {
+    "nome" : "Banheiro",
+    "largura" : 2.0,
+    "comprimento" : 3.0,
+    "tamanho" : 6.0
+  } ]
+}, {
+  "nome" : "Casa1",
+  "bairro" : {
+    "nome" : "Bairro1",
+    "valorMetroQuadrado" : 100.00
+  },
+  "tamanho" : 912.0,
+  "comodos" : [ {
+    "nome" : "Quarto1",
+    "largura" : 25.0,
+    "comprimento" : 33.0,
+    "tamanho" : 825.0
+  }, {
+    "nome" : "Quarto2",
+    "largura" : 4.0,
+    "comprimento" : 4.0,
+    "tamanho" : 16.0
+  }, {
+    "nome" : "Cozinha",
+    "largura" : 6.0,
+    "comprimento" : 5.0,
+    "tamanho" : 30.0
+  }, {
+    "nome" : "Sala",
+    "largura" : 7.0,
+    "comprimento" : 5.0,
+    "tamanho" : 35.0
+  }, {
+    "nome" : "Banheiro",
+    "largura" : 2.0,
+    "comprimento" : 3.0,
+    "tamanho" : 6.0
+  } ]
+}, {
+  "nome" : "Casa1",
+  "bairro" : {
+    "nome" : "Bairro1",
     "valorMetroQuadrado" : 100.00
   },
   "tamanho" : 912.0,

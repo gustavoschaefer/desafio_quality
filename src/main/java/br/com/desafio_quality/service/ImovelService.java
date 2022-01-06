@@ -18,13 +18,17 @@ import java.util.Optional;
 @Service
 public class ImovelService {
 
-    ImovelRepository imovelRepository;
+    ImovelRepository imovelRepository = new ImovelRepository();
     
-    ComodoService comodoService;
+    ComodoService comodoService = new ComodoService();
 
-    BairroService bairroService;
+    BairroService bairroService = new BairroService();
 
     List<Imovel> imovelList = new ArrayList<>();
+
+    public ImovelService(){
+
+    }
 
     public ImovelService(ImovelRepository imovelRepository, BairroService bairroService, ComodoService comodoService) {
         this.imovelRepository = imovelRepository;
