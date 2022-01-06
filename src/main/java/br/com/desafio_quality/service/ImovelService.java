@@ -19,17 +19,27 @@ import java.util.Optional;
 public class ImovelService {
 
     ImovelRepository imovelRepository;
-
-    @Autowired
+    
     ComodoService comodoService;
 
     BairroService bairroService;
 
     List<Imovel> imovelList = new ArrayList<>();
 
+    public ImovelService(ImovelRepository imovelRepository, BairroService bairroService, ComodoService comodoService) {
+        this.imovelRepository = imovelRepository;
+        this.bairroService = bairroService;
+        this.comodoService = comodoService;
+    }
+    
     public ImovelService(ImovelRepository imovelRepository, BairroService bairroService) {
         this.imovelRepository = imovelRepository;
         this.bairroService = bairroService;
+    }
+    
+    public ImovelService(ImovelRepository imovelRepository, ComodoService comodoService) {
+    	this.imovelRepository = imovelRepository;
+    	this.comodoService = comodoService;    	
     }
 
     //Endpoint para cadastrar Imovel
@@ -89,7 +99,7 @@ public class ImovelService {
         return null;
     }
 
-    //Busca maior quarto
+    //Busca maior comodo
     public Comodo obtemMaiorComodo(String nome) {
             try{
                 Optional<Imovel> optional = imovelRepository.listarImovel().stream()

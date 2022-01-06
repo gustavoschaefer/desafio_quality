@@ -14,7 +14,7 @@ public class ComodoService {
     public static List<Comodo> quartoList = new ArrayList<>();
 
 
-    //Busca o maior quarto de um imovel
+    //Busca o maior comodo de um imovel
     public Comodo comparaComodos(Imovel imovel){
         quartoList = imovel.getComodos();
         return quartoList.stream()

@@ -1,16 +1,14 @@
 package br.com.desafio_quality.repository;
 
-import br.com.desafio_quality.entity.Bairro;
-import br.com.desafio_quality.entity.Imovel;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import org.springframework.stereotype.Component;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import br.com.desafio_quality.entity.Bairro;
 
 @Component
 public class BairroRepository {
@@ -26,7 +24,7 @@ public class BairroRepository {
     }
 
     public List<Bairro> getBairros() throws IOException {
-        //bairros = objectMapper.readValue(new File(PATH), new TypeReference<ArrayList<Bairro>>() {});
+        bairros = objectMapper.readValue(new File(PATH), new TypeReference<ArrayList<Bairro>>() {});
         return bairros;
     }
 
