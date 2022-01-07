@@ -6,7 +6,6 @@ import br.com.desafio_quality.repository.ImovelRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -15,20 +14,14 @@ import java.util.Optional;
 public class ImovelService {
 
     private final ImovelRepository imovelRepository;
-    
     private final ComodoService comodoService;
-
     private final BairroService bairroService;
-
-
 
     public ImovelService(ImovelRepository imovelRepository, BairroService bairroService, ComodoService comodoService) {
         this.imovelRepository = imovelRepository;
         this.bairroService = bairroService;
         this.comodoService = comodoService;
     }
-    
-
 
     //Endpoint para cadastrar Imovel
     public Imovel cadastra(Imovel imovel) {

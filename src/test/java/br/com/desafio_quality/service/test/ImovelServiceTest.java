@@ -1,6 +1,5 @@
 package br.com.desafio_quality.service.test;
 
-
 import br.com.desafio_quality.entity.Bairro;
 import br.com.desafio_quality.entity.Comodo;
 import br.com.desafio_quality.entity.Imovel;
@@ -12,7 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -98,7 +96,6 @@ public class ImovelServiceTest {
         ResponseStatusException thrown = Assertions.assertThrows(
                 ResponseStatusException.class,
                 () -> imovelService.buscarImovel("CasaTeste"));
-
 
         Assertions.assertTrue(thrown.getMessage().contains("Imovel não registrado."));
 

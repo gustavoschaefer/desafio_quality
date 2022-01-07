@@ -1,12 +1,10 @@
 package br.com.desafio_quality.repository;
 
-
 import br.com.desafio_quality.entity.Imovel;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.stereotype.Repository;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

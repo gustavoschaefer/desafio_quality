@@ -8,8 +8,7 @@ public class ComodoTest {
 	
 	@Test
 	public void deveRetornarTamanhoComodo() {
-		
-		Comodo comodo = Comodo.builder().nome("Quarto1").largura(3).comprimento(4).build();		
+		Comodo comodo = Comodo.builder().nome("Quarto1").largura(3).comprimento(4).build();
 		Assertions.assertEquals(comodo.getTamanho(), 12.0);
 	}
 	

@@ -3,7 +3,6 @@ package br.com.desafio_quality.service;
 import br.com.desafio_quality.entity.Comodo;
 import br.com.desafio_quality.entity.Imovel;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -15,7 +14,6 @@ public class ComodoService {
 
     public ComodoService() {
     }
-
 
     //Busca o maior comodo de um imovel
     public Comodo comparaComodos(Imovel imovel){
